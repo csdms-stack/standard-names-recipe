@@ -1,0 +1,36 @@
+{% set name = "standard_names" %}
+{% set version = "0.2.2" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/csdms/standard_names
+
+requirements:
+  build:
+    - setuptools
+    - python
+    - pyyaml
+    - six
+  run:
+    - python
+    - pyyaml
+    - nose
+    - six
+
+test:
+  imports:
+    - standard_names
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+about:
+  home: https://github.com/csdms/standard_names
+  license: MIT
+  license_file: LICENSE
+  summary: Python utilities for working with CSDMS standard names.
+  dev_url: https://github.com/csdms/standard_names
